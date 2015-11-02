@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app = "Vodafone">
+	<head>
+		<link rel="stylesheet" href="css/w3.css">
+		<link rel = "stylesheet" href = "css/index.css">
+		<script src = "js/angular.js"></script>
+		<script src = "js/app.js"></script>
+		<title>:!0.0!:</title>
+	</head>
+	<body ng-controller = "AlbumsCtrl as albums">
+		<header class="w3-container w3-green">
+		  <h1>Ablum List</h1> 
+		</header>
+		<div class="w3-row">
+		  	<section class="w3-container w3-third">
+		    	<div ng-repeat="album in albums">
+					<article ng-click="loadAlbum(album.id)">
+						<h3 class="title">{{album.title}}</h3>
+						<h6 class="name">{{album.name}}<h6>
+					</article>
+				</div>
+		  	</section>
+		  	<aside class="w3-container w3-twothird" ng-init="loadAlbum(1)">
+		    	<div ng-repeat="photo in currentAlbum">
+					<h3 class="title" id＝ "{{photo.id}}">{{photo.title}}</h3>
+						<a href = "#fullSizeImage" ng-click = "setCurrentImage(photo.url, photo.id)" data-toggle="modal">
+							<img ng-src = "{{photo.thumbnailUrl}}" class='highlight'/>
+						</a>
+					<hr/>
+				</div>
+		  	</aside>
+		</div>
+		<div class="loading" ng-show="loading">
+			<div class="loading-bar"></div>
+			<div class="loading-bar"></div>
+			<div class="loading-bar"></div>
+			<div class="loading-bar"></div>
+		</div>
+		<div id="fullSizeImage" class="modal">
+			<div class="modal-dialog">
+			    <div class="modal-content">
+			       	<a href="{{anchor}}" class="closebtn"> X </a>
+			      	<div class="container">
+				        <img ng-src="{{currentImage}}"/>
+			      	</div>
+			    </div>
+		  	</div>
+		</div>
+		<footer>Copyright Tao Wang</footer>
+	</body>
+</html>
